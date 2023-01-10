@@ -1,4 +1,4 @@
-const tmi = require('./tmi');
+const tmi = require('./tmi.js');
 
 // Define configuration options
 const opts = {
