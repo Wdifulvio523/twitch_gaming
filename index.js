@@ -1,27 +1,29 @@
 require('dotenv').config();
-const tmi = require('./tmi');
+const tmi = require('tmi.js');
 
-// Define configuration options
 const opts = {
     identity: {
-        username: 'your_bot_username',
-        password: 'oauth:YOUR_OAUTH_TOKEN'
+        username: 'paid4hire',
+        password: 'oauth:v32h133sjdlikg5ux1e19clfct9nfj'
     },
     channels: [
         'channel_name_to_join'
     ]
 };
 
-// Create a client with our options
-const client = new tmi.client(opts);
+const client = new tmi.Client(opts);
 
-// Register our event handlers (defined below)
-client.on('message', require('./onMessageHandler'));
-client.on('connected', require('./onConnectedHandler'));
-
-client.on('error', (error) => {
-    console.error(error);
+client.on('error', (err) => {
+    console.error(`Error: ${err}`);
 });
 
-// Connect to Twitch:
-client.connect();
+try {
+    client.connect()
+        .then(() => {
+            console.log('connected!');
+        }).catch(err => {
+            console.error(`Error: ${err}`);
+        });
+} catch (err) {
+    console.error(`Error: ${err}`);
+}
