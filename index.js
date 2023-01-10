@@ -1,4 +1,3 @@
-// index.js
 const tmi = require('./tmi');
 
 // Define configuration options
