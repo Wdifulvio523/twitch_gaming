@@ -10,7 +10,7 @@ module.exports = function onMessageHandler (target, context, msg, self) {
         client.say(target, `You rolled a ${num}`);
         console.log(`* Executed ${commandName} command`);
     } else if (commandName === '!promote') {
-        client.say(target, `Check out my channel at https://www.twitch.tv/mychannelname`);
+        client.say(target, `Check out my channel at https://www.twitch.tv/paid4hire`);
         console.log(`* Executed ${commandName} command`);
     } else if (commandName.includes('!hello')) {
         client.say(target, `Hello there!`);
@@ -36,7 +36,7 @@ module.exports = function onMessageHandler (target, context, msg, self) {
         client.say(target, `You rolled a ${num}`);
         console.log(`* Executed ${commandName} command`);
     } else if (commandName === '!promote') {
-        client.say(target, `Check out my channel at https://www.twitch.tv/mychannelname`);
+        client.say(target, `Check out my channel at https://www.twitch.tv/paid4hire`);
         console.log(`* Executed ${commandName} command`);
     } else if (commandName.includes('!hello')) {
         client.say(target, `Hello there!`);
