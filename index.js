@@ -32,26 +32,35 @@
 //     console.error(`Error: ${err}`);
 // }
 
+require('dotenv').config();
 const tmi = require('tmi.js');
 
 const client = new tmi.Client({
 	options: { debug: true },
 	identity: {
-		username: 'paid4hire',
-		password: 'oauth:f482qpbbzmcor9qcgnt486gnlsqfc7'
+		USERNAME: process.env.USERNAME + Math.floor(Math.random()*100000),
+		PASSWORD: process.env.OAUTH_TOKEN
 	},
-	channels: [ 'paid4hire' ]
 });
 
 client.connect();
 
-client.on('message', (channel, tags, message, self) => {
-	// Ignore echoed messages.
-	if(self) return;
-
-	if(message.toLowerCase() === '!hello') {
-		// "@alca, heya!"
-		client.say(channel, `@${tags.username}, heya!`);
-	}
+client.on('connected', (addr, port) => {
+    console.log(`Connected to ${addr}:${port}`);
 });
-	
+
+client.on('message', (channel, tags, message, self) => {
+    // Ignore echoed messages.
+    if(self) return;
+
+    if(message.toLowerCase() === '!hello') {
+        // "@alca, heya!"
+        client.say(channel, `@${tags.username}, heya!`);
+    }
+});
+
+client.on('disconnected', (reason) => {
+    console.log('Disconnected due to: '+ reason);
+});
+
+client.connect();
